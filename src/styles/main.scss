@@ -1,3 +1,47 @@
+$cal-margin: 1px;
+$cal-size: 100px;
+
 body {
   margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin day {
+  width: $cal-size;
+  height: $cal-size;
+  margin: 0 $cal-margin $cal-margin 0;
+  background-color: #eee;
+  border: 1px solid;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 1s;
+  &:hover {
+    transform: translateY(-20px);
+    background-color: pink;
+  }
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: (($cal-margin+$cal-size)*7);
+}
+
+@for $i from 1 to 31 {
+  .calendar diV:nth-child(#{$i})::after {
+    content: "#{$i}";
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+    line-height: 100px;
+  }
+}
+
+@for $i from 1 through 31 {
+  .calendar-#{$i} div:nth-child(-n+#{$i}) {
+    @include day  ;
+  }
 }
