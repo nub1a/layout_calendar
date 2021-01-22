@@ -1,6 +1,7 @@
-$cal-margin: 1px;
-$cal-size: 100px;
-$max-margin: 606px;
+@import "variables";
+@import "mixins";
+@import "calendar";
+@import "loops";
 
 body {
   margin: 0;
@@ -8,78 +9,4 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@mixin day {
-  width: $cal-size;
-  height: $cal-size;
-  margin: 0 $cal-margin $cal-margin 0;
-  background-color: #eee;
-  border: 1px solid;
-  box-sizing: border-box;
-  text-align: center;
-  transition: transform 1s;
-  &:hover {
-    transform: translateY(-20px);
-    background-color: pink;
-  }
-}
-
-.calendar {
-  display: flex;
-  flex-wrap: wrap;
-  width: (($cal-margin+$cal-size)*7);
-}
-
-@for $i from 1 through 31 {
-  .calendar-#{$i} div:nth-child(-n+#{$i}) {
-    @include day;
-  }
-}
-
-$day:
-  (
-    "28": 28,
-    "29": 29,
-    "30": 30,
-    "31": 31,
-  );
-
-@each $days, $counts in $day {
-  @for $i from 1 to $counts+1 {
-    .calendar-#{$counts} div:nth-child(#{$i})::after {
-      content: "#{$i}";
-      text-align: center;
-      width: 100%;
-      font-size: 30px;
-      line-height: 100px;
-    }
-  }
-}
-
-//@for $i from 1 to #{$day+1} {
-//  .calendar-#{$day} div:nth-child(-n+#{$i})::after {
-//    content: "#{$i}";
-//    text-align: center;
-//    width: 100%;
-//    font-size: 30px;
-//    line-height: 100px;
-//  }
-//}
-
-$days:
-  (
-    "sun": $max-margin,
-    "sut": $max-margin - ($cal-size + $cal-margin)*1,
-    "fri": $max-margin - ($cal-size + $cal-margin)*2,
-    "thu": $max-margin - ($cal-size + $cal-margin)*3,
-    "wed": $max-margin - ($cal-size + $cal-margin)*4,
-    "tue": $max-margin - ($cal-size + $cal-margin)*5,
-    "mon": $max-margin - ($cal-size + $cal-margin)*6
-  );
-
-@each $day, $margins in $days {
-  .calendar-#{$day} div:first-child {
-    margin-left: $margins;
-  }
 }

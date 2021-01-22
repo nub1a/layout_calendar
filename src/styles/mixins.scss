@@ -1,0 +1,16 @@
+@import "variables";
+
+@mixin day {
+  width: $cal-size;
+  height: $cal-size;
+  margin: 0 $cal-margin $cal-margin 0;
+  background-color: #eee;
+  border: 1px solid;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 1s;
+  &:hover {
+    transform: translateY(-20px);
+    background-color: pink;
+  }
+}

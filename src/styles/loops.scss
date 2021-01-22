@@ -1,0 +1,26 @@
+@import "variables";
+@import "mixins";
+
+@for $i from 1 through 31 {
+  .calendar-#{$i} div:nth-child(-n+#{$i}) {
+    @include day;
+  }
+}
+
+@each $days, $counts in $day {
+  @for $i from 1 to $counts+1 {
+    .calendar-#{$counts} div:nth-child(#{$i})::after {
+      content: "#{$i}";
+      text-align: center;
+      width: 100%;
+      font-size: 30px;
+      line-height: 100px;
+    }
+  }
+}
+
+@each $day, $margins in $days {
+  .calendar-#{$day} div:first-child {
+    margin-left: $margins;
+  }
+}
