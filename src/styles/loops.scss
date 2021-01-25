@@ -11,10 +11,6 @@
   @for $i from 1 to $counts+1 {
     .calendar-#{$counts} div:nth-child(#{$i})::after {
       content: "#{$i}";
-      text-align: center;
-      width: 100%;
-      font-size: 30px;
-      line-height: 100px;
     }
   }
 }

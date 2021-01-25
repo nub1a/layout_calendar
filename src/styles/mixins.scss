@@ -9,6 +9,12 @@
   box-sizing: border-box;
   text-align: center;
   transition: transform 1s;
+  &:after {
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+    line-height: 100px;
+  }
   &:hover {
     transform: translateY(-20px);
     background-color: pink;
