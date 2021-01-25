@@ -1,15 +1,8 @@
 @import "variables";
-@import "mixins";
 
 @for $i from 1 through 31 {
-  .calendar-#{$i} div:nth-child(-n+#{$i}) {
-    @include day;
-  }
-}
-
-@each $days, $counts in $day {
-  @for $i from 1 to $counts+1 {
-    .calendar-#{$counts} div:nth-child(#{$i})::after {
+  .calendar div:nth-child(#{$i}) {
+    &::after {
       content: "#{$i}";
     }
   }
